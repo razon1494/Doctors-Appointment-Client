@@ -15,7 +15,6 @@ const Login=() => {
         const newLoginData={...loginData}
         newLoginData[field]=value;
         setLoginData(newLoginData);
-
     }
     const handleLoginSubmit=e => {
         loginUser(loginData.email, loginData.password, location, history);

@@ -21,7 +21,7 @@ const style = {
 };
 
 const BookingModal=({openBooking, handleBookingClose,setBookingSuccess, booking,date}) => {
-  const {name, time}=booking;
+  const {name, time, price}=booking;
   const {user}=useAuth();
     const {displayName, email}=user;
   const initialInfo = {patientName: displayName, email: email, phone : '' }
@@ -34,11 +34,12 @@ const BookingModal=({openBooking, handleBookingClose,setBookingSuccess, booking,
         ...bookingInfo,
         time,
         serviceName: name,
+        price,
         date: date.toLocaleDateString()
       }
       console.log(appointment)
         //send to the server
-      fetch('http://localhost:5000/appointments', {
+      fetch('https://ancient-spire-33110.herokuapp.com/appointments', {
         method: 'POST',
         headers: {
           'content-type' : 'application/json'

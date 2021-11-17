@@ -7,11 +7,13 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import useAuth from '../../../hooks/useAuth'
+import {Link} from 'react-router-dom';
+
 const Appointments=({date}) => {
     const {user, token}=useAuth();
     const [appointments, setAppointments]=useState([]);
     useEffect(() => {
-        const url = `http://localhost:5000/appointments?email=${user.email}&date=${date}`
+        const url = `https://ancient-spire-33110.herokuapp.com/appointments?email=${user.email}&date=${date.toLocaleDateString()}`
       fetch(url, {
         headers: {
             'authorization' : `Bearer ${token}`
@@ -19,7 +21,11 @@ const Appointments=({date}) => {
         })
             .then(res => res.json())
             .then(data => setAppointments(data))
-    },[date, user.email, token])
+    }, [date, user.email, token])
+
+  const handlePay=()=>{
+
+  }
     return (
         <div>
             <h2>Appointments {appointments.length}</h2>
@@ -30,7 +36,7 @@ const Appointments=({date}) => {
             <TableCell>Name</TableCell>
             <TableCell align="right">Time</TableCell>
             <TableCell align="right">Service</TableCell>
-            <TableCell align="right">Action</TableCell>
+            <TableCell align="right">Payment</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -44,7 +50,7 @@ const Appointments=({date}) => {
               </TableCell>
               <TableCell align="right">{row.time}</TableCell>
               <TableCell align="right">{row.serviceName}</TableCell>
-              <TableCell align="right">Ok</TableCell>
+              <TableCell align="right">{row.payment? 'Paid':<Link to={`/dashboard/payment/${row._id}`}>  <button> Pay </button> </Link>}</TableCell>
             </TableRow>
           ))}
         </TableBody>

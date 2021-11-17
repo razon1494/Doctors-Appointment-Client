@@ -3,13 +3,12 @@ import React, {useState} from 'react';
 import useAuth from '../../../hooks/useAuth';
 
 const MakeAdmin=() => {
-    console.log('h');
     const [email, setEmail]=useState('');
     const [success, setSuccess]=useState(false);
     const {token}=useAuth();
     const handleAdminSubmit=e => {
         const user={email};
-        fetch('http://localhost:5000/users/admin', {
+        fetch('https://ancient-spire-33110.herokuapp.com/users/admin', {
             method: "PUT",
             headers: {
                 'authorization' : `Bearer ${token}`,

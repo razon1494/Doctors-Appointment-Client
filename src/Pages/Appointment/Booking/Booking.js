@@ -18,6 +18,9 @@ const Booking=({booking, date,setBookingSuccess}) => {
             <Typography variant="h6" gutterBottom component="div">
         {booking.time}
       </Typography>
+            <Typography variant="h6" gutterBottom component="div">Fees: $
+        {booking.price}
+      </Typography>
             <Typography variant="caption" display="block" gutterBottom>
         {booking.space} SPACES AVAILABLE
       </Typography>

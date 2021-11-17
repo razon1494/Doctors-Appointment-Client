@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {Alert, Button, Container, Grid, LinearProgress, TextField, Typography} from '@mui/material';
+import {Alert, Button, Container, Grid, TextField, Typography} from '@mui/material';
 
 import {NavLink, useHistory} from 'react-router-dom/cjs/react-router-dom.min';
 import login from '../../../images/login.png'
